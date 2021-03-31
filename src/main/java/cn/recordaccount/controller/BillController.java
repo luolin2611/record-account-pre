@@ -2,9 +2,7 @@ package cn.recordaccount.controller;
 
 import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
-import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoReq;
-import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoRes;
-import cn.recordaccount.common.dto.recordaccount.bill.QuerySysTimeRes;
+import cn.recordaccount.common.dto.recordaccount.bill.*;
 import cn.recordaccount.service.bill.BillService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,5 +56,15 @@ public class BillController {
         querySysTimeRes.setWeek(nowDate.get(Calendar.DAY_OF_WEEK));
         querySysTimeRes.setDate(System.currentTimeMillis());
         return Response.success(querySysTimeRes);
+    }
+
+    /**
+     * 查询 月支出/月收入 列表
+     *
+     * @return
+     */
+    @PostMapping("/queryMonthIncomeExpenseList")
+    public Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(@RequestBody Request<QueryMonthIncomeExpenseListReq> request){
+        return billService.queryMonthIncomeExpenseList(request);
     }
 }

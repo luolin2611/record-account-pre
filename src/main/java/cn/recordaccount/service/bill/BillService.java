@@ -4,6 +4,8 @@ import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
 import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoReq;
 import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoRes;
+import cn.recordaccount.common.dto.recordaccount.bill.QueryMonthIncomeExpenseListReq;
+import cn.recordaccount.common.dto.recordaccount.bill.QueryMonthIncomeExpenseListRes;
 
 /**
  * @author rollin
@@ -11,4 +13,11 @@ import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoRes;
  */
 public interface BillService {
     Response<QueryBillInfoRes> queryBillInfo(Request<QueryBillInfoReq> request);
+
+    /**
+     * 查询 月支出/月收入 列表
+     *
+     * @return
+     */
+    Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(Request<QueryMonthIncomeExpenseListReq> request);
 }

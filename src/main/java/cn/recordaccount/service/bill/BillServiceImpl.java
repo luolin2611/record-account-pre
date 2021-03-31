@@ -7,6 +7,8 @@ import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
 import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoRes;
 import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoReq;
+import cn.recordaccount.common.dto.recordaccount.bill.QueryMonthIncomeExpenseListReq;
+import cn.recordaccount.common.dto.recordaccount.bill.QueryMonthIncomeExpenseListRes;
 import cn.recordaccount.common.util.HttpUtil;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,21 @@ public class BillServiceImpl implements BillService {
     public Response<QueryBillInfoRes> queryBillInfo(Request<QueryBillInfoReq> request) {
         //1.获取请求地址
         String requestMethod = ApiEnum.BILL_QUERY_BILL_INFO.getRequestMethod();
-        //3.请求服务
+        //2.请求服务
+        return HttpUtil.getResponse(request, Constant.SERVER_NAME_RECORD_ACCOUNT, requestMethod);
+    }
+
+    /**
+     * 查询 月支出/月收入 列表
+     *
+     * @param request
+     * @return
+     */
+    @Override
+    public Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(Request<QueryMonthIncomeExpenseListReq> request) {
+        //1.获取请求地址
+        String requestMethod = ApiEnum.BILL_QUERY_MONTH_INCOME_EXPENSE_INFO.getRequestMethod();
+        //2.请求服务
         return HttpUtil.getResponse(request, Constant.SERVER_NAME_RECORD_ACCOUNT, requestMethod);
     }
 }

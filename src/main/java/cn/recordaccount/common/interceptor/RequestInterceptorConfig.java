@@ -30,7 +30,7 @@ public class RequestInterceptorConfig extends WebMvcConfigurationSupport {
         List<String> ignoreJwtList = new ArrayList<>();
         ignoreJwtList.add(LOGIN);
         ignoreJwtList.add(REGISTER);
-        //因为查询图表在不登录的情况也可以请求所以此处应该 略过jwt 验证
+        //因为查询图标在不登录的情况也可以请求所以此处应该 略过jwt 验证
         ignoreJwtList.add(QUERY_ALL_CLASSIFY);
         registry.addInterceptor(new JwtInterceptor())
                 //拦截所有请求

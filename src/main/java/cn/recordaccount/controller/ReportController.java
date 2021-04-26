@@ -2,6 +2,8 @@ package cn.recordaccount.controller;
 
 import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
+import cn.recordaccount.common.dto.recordaccount.report.QueryReportDetailsListReq;
+import cn.recordaccount.common.dto.recordaccount.report.QueryReportDetailsListRes;
 import cn.recordaccount.common.dto.recordaccount.report.QueryReportInfoReq;
 import cn.recordaccount.common.dto.recordaccount.report.QueryReportInfoRes;
 import cn.recordaccount.service.report.ReportService;
@@ -28,5 +30,16 @@ public class ReportController {
     @PostMapping("/queryReportInfo")
     public Response<QueryReportInfoRes> queryReportInfo(@RequestBody Request<QueryReportInfoReq> request) {
         return reportService.queryReportInfo(request);
+    }
+
+    /**
+     * 请求详情列表
+     *
+     * @param request
+     * @return
+     */
+    @PostMapping("/queryReportDetailsList")
+    public Response<QueryReportDetailsListRes> queryReportDetailsList(@RequestBody Request<QueryReportDetailsListReq> request) {
+        return reportService.queryReportDetailsList(request);
     }
 }

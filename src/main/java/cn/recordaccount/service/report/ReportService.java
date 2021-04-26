@@ -3,6 +3,8 @@ package cn.recordaccount.service.report;
 
 import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
+import cn.recordaccount.common.dto.recordaccount.report.QueryReportDetailsListReq;
+import cn.recordaccount.common.dto.recordaccount.report.QueryReportDetailsListRes;
 import cn.recordaccount.common.dto.recordaccount.report.QueryReportInfoReq;
 import cn.recordaccount.common.dto.recordaccount.report.QueryReportInfoRes;
 
@@ -20,4 +22,12 @@ public interface ReportService {
      * @return
      */
     Response<QueryReportInfoRes> queryReportInfo(Request<QueryReportInfoReq> request);
+
+    /**
+     * 请求详情列表
+     *
+     * @param request
+     * @return
+     */
+    Response<QueryReportDetailsListRes> queryReportDetailsList(Request<QueryReportDetailsListReq> request);
 }

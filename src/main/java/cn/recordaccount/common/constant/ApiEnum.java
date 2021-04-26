@@ -31,6 +31,7 @@ public enum ApiEnum {
      * 报表部分
      */
     REPORT_QUERY_REPORT_INFO("/report/queryReportInfo", "获取报表信息"),
+    REPORT_QUERY_DETAILS_LIST("/report/queryReportDetailsList", "请求详情列表"),
 
 
     ;

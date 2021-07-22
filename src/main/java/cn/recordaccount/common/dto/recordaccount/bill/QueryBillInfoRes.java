@@ -28,6 +28,12 @@ public class QueryBillInfoRes implements Serializable {
     private double income;
 
     /**
+     * 返回的条数（注意是内层的总条数，也就是没有处理过的条数）
+     */
+    @NotNull
+    private int total;
+
+    /**
      * 年账单
      */
     private YearBillDetail yearBillDetail;

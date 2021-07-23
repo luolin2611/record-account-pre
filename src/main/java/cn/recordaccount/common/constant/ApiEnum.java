@@ -25,6 +25,7 @@ public enum ApiEnum {
      */
     BILL_QUERY_BILL_INFO("/bill/queryBillInfo", "获取账单信息"),
     BILL_QUERY_MONTH_INCOME_EXPENSE_INFO("/bill/queryMonthIncomeExpenseList", "查询 月支出/月收入 列表"),
+    BILL_QUERY_YEAR_BROKE_LINE_LIST("/bill/queryYearBrokeLineList", "查询 查询年账单折线图数据 列表"),
 
 
     /**

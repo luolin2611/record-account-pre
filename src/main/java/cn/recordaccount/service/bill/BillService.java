@@ -2,10 +2,7 @@ package cn.recordaccount.service.bill;
 
 import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
-import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoReq;
-import cn.recordaccount.common.dto.recordaccount.bill.QueryBillInfoRes;
-import cn.recordaccount.common.dto.recordaccount.bill.QueryMonthIncomeExpenseListReq;
-import cn.recordaccount.common.dto.recordaccount.bill.QueryMonthIncomeExpenseListRes;
+import cn.recordaccount.common.dto.recordaccount.bill.*;
 
 /**
  * @author rollin
@@ -20,4 +17,12 @@ public interface BillService {
      * @return
      */
     Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(Request<QueryMonthIncomeExpenseListReq> request);
+
+    /**
+     * 查询年账单折线图数据
+     *
+     * @param request 请求参数
+     * @return 每月的收入和支出list
+     */
+    Response<QueryYearBrokeLineListRes> queryYearBrokeLineList(Request<QueryYearBrokeLineListReq> request);
 }

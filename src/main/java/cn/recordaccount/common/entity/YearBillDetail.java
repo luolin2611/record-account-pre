@@ -18,4 +18,9 @@ public class YearBillDetail implements Serializable {
      * 年账单明细
      */
     private List<YearBillDetailObject> yearBillDetailObjectList;
+
+    /**
+     * 总结余
+     */
+    private double totalSurplus;
 }

@@ -67,4 +67,15 @@ public class BillController {
     public Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(@RequestBody Request<QueryMonthIncomeExpenseListReq> request){
         return billService.queryMonthIncomeExpenseList(request);
     }
+
+    /**
+     * 查询年账单折线图数据
+     *
+     * @param request 请求参数
+     * @return 每月的收入和支出list
+     */
+    @PostMapping("/queryYearBrokeLineList")
+    public Response<QueryYearBrokeLineListRes> queryYearBrokeLineList(@RequestBody Request<QueryYearBrokeLineListReq> request) {
+        return billService.queryYearBrokeLineList(request);
+    }
 }

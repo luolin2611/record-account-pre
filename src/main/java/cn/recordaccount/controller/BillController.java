@@ -4,13 +4,21 @@ import cn.recordaccount.common.dto.Request;
 import cn.recordaccount.common.dto.Response;
 import cn.recordaccount.common.dto.recordaccount.bill.*;
 import cn.recordaccount.service.bill.BillService;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * 账单Controller
@@ -64,7 +72,7 @@ public class BillController {
      * @return
      */
     @PostMapping("/queryMonthIncomeExpenseList")
-    public Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(@RequestBody Request<QueryMonthIncomeExpenseListReq> request){
+    public Response<QueryMonthIncomeExpenseListRes> queryMonthIncomeExpenseList(@RequestBody Request<QueryMonthIncomeExpenseListReq> request) {
         return billService.queryMonthIncomeExpenseList(request);
     }
 
@@ -77,5 +85,34 @@ public class BillController {
     @PostMapping("/queryYearBrokeLineList")
     public Response<QueryYearBrokeLineListRes> queryYearBrokeLineList(@RequestBody Request<QueryYearBrokeLineListReq> request) {
         return billService.queryYearBrokeLineList(request);
+    }
+
+    /**
+     * 查询账单导出
+     * <p>该下载文件的方式参考链接：</p>
+     * <p><a>https://blog.csdn.net/qq_34940644/article/details/99638156</a></p>
+     * <p><a>https://www.cnblogs.com/alice-cj/p/10363123.html</a></p>
+     *
+     * @param request 请求参数
+     * @return 返回账单信息
+     */
+    @PostMapping("/billExport")
+    public void billExport(HttpServletResponse response,
+                           @Valid @RequestBody Request<BillExportReq> request) throws IOException {
+        Workbook wb = billService.billExportQueryRecordAccount(request);
+        // 将wb 写入输出流中
+        ServletOutputStream outputStream = response.getOutputStream();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        wb.write(byteArrayOutputStream);
+        // 响应类型,编码
+        response.setContentType("application/vnd.ms-excel;charset=utf-8");
+        // 设置生成的Excel的文件名
+        response.setHeader("Content-Disposition", "attachment;filename=" +
+                new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + ".xlsx");
+        // 刷新此输出流并强制将所有缓冲的输出字节被写出
+        outputStream.write(byteArrayOutputStream.toByteArray());
+        outputStream.flush();
+        outputStream.close();
+        wb.close();
     }
 }

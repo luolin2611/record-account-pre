@@ -5,8 +5,8 @@ server:
 
 #server 地址
 remote:
-  ip: 192.168.1.134
-#  ip: localhost
+#  ip: 192.168.1.134
+  ip: 127.0.0.1
   user-port: 10003
   record-account-port: 10004
 

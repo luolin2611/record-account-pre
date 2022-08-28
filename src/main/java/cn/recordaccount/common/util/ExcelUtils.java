@@ -53,7 +53,7 @@ public enum ExcelUtils {
         map.put("导出信息", Arrays.asList("导出类型", "年份", "月份", "开始时间", "结束时间", "导出时间"));
         excelHeadSheetList.add(map);
         map = new HashMap<String, List<String>>();
-        map.put("账单报表", Arrays.asList("共计时间(年)", "时间范围", "收入总额", "支出总额", "总结余", "统计时间"));
+        map.put("账单报表", Arrays.asList("共计时间(年)", "时间范围", "收入总额(元)", "支出总额(元)", "总结余", "统计时间"));
         excelHeadSheetList.add(map);
     }
 
